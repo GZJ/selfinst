@@ -12,7 +12,11 @@ PATH_DST="$PATH_WORK/iso-new"
 
 #------------------------- iso -----------------------------------
 iso=""
-iso_name=debian-12.5.0-amd64-netinst.iso
+iso_name=$(wget -q -O - https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/ | grep -oP 'debian-\d+\.\d+\.\d+-amd64-netinst\.iso' | sort -r | head -n 1)
+if [ -z "$iso_name" ]; then
+    echo "Failed to find the latest ISO name"
+    exit 1
+fi
 
 mkdir -p $PATH_WORK $PATH_SRC $PATH_DST
 cd $PATH_WORK
