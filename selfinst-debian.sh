@@ -20,10 +20,31 @@ cd $PATH_WORK
 if [ "$path_src_iso" = "" ] ; then
     if [ ! -f "$PATH_WORK/$iso_name" ] ; then
         wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/$iso_name
+        if [ $? -ne 0 ]; then
+            echo "Failed to download $iso_name"
+            exit 1
+        fi
         wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS
+        if [ $? -ne 0 ]; then
+            echo "Failed to download SHA512SUMS"
+            exit 1
+        fi
+
+        computed_checksum=$(sha512sum $iso_name | awk '{ print $1 }')
+        expected_checksum=$(grep $iso_name SHA512SUMS | awk '{ print $1 }')
+        if [ "$computed_checksum" = "$expected_checksum" ]; then
+            echo "ISO sha512 checksum matches!"
+        else
+            echo "ISO sha512 checksum does not match!"
+            exit 1
+        fi
     fi
     iso=$PATH_WORK/$iso_name
 else
+    if [ ! -e "$path_src_iso" ] ; then
+        echo "Source ISO file $path_src_iso does not exist!"
+        exit 1
+    fi
     cp $path_src_iso $PATH_WORK
     iso=$path_src_iso
 fi
