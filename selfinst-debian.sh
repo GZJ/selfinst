@@ -179,7 +179,7 @@ fetch_iso() {
 #------------------------- preseed -----------------------------------
 create_preseed_config() {
     local path_preseed="$1"
-    local path_data_name=$(basename $2)
+    local path_data=$2
 
     local preseed_hostname="selfinst"
     local preseed_nameservers="114.114.114.114"
@@ -268,8 +268,11 @@ d-i grub-installer/bootdev string default
 d-i finish-install/keep-consoles boolean true
 d-i finish-install/reboot_in_progress note
 
-d-i preseed/late_command string \\
-    cp -r /cdrom/$path_data_name /target/home/$preseed_user/
+$(if [ -n "$path_data" ]; then 
+    path_data_name=$(basename $path_data)
+    echo "d-i preseed/late_command string \\"
+    echo "    cp -r /cdrom/$path_data_name /target/home/$preseed_user/"
+fi)
 EOF
     else
         cp "$path_preseed" "$PATH_WORK"
