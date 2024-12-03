@@ -10,8 +10,8 @@ selfinst-debian.sh
 
 # Or specify the source ISO, preseed configuration, destination ISO, and additional data
 selfinst-debian.sh \
-    -s /path/to/debian-11.iso \
-    -p /path/to/custom-preseed.cfg \
+    -s /path/to/debian.iso \
+    -p /path/to/preseed.cfg \
     -d /path/to/custom-debian.iso \
     --data /path/to/extra/files
 ```
