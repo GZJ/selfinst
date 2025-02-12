@@ -275,7 +275,7 @@ $(if [ -n "$path_data" ]; then
 fi)
 EOF
     else
-        cp "$path_preseed" "$PATH_WORK"
+        cp "$path_preseed" "$PATH_WORK/preseed.cfg"
     fi
 }
 
