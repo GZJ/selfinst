@@ -2,6 +2,46 @@
 
 `selfinst` is a collection of scripts to build unattended ISO images, allowing for automated os installations. By using a unified set of parameters, you can quickly create an unattended installation ISO.
 
+# Install
+
+## Prerequisites
+
+Before using selfinst, ensure you have the following dependencies installed:
+
+```shell
+# For Debian/Ubuntu systems
+sudo apt update
+sudo apt install -y genisoimage squashfs-tools xorriso wget curl
+
+# For RHEL/CentOS/Fedora systems  
+sudo yum install -y genisoimage squashfs-tools xorriso wget curl
+# or for newer versions
+sudo dnf install -y genisoimage squashfs-tools xorriso wget curl
+```
+
+## Installation
+
+Clone the repository and make the scripts executable:
+
+```shell
+git clone https://github.com/GZJ/selfinst.git
+cd selfinst
+chmod +x *.sh
+```
+
+## Quick Setup
+
+For a quick start with default settings:
+
+```shell
+# Download and make the main script executable
+wget https://raw.githubusercontent.com/GZJ/selfinst/master/selfinst-debian.sh
+chmod +x selfinst-debian.sh
+
+# Run with default settings
+./selfinst-debian.sh
+```
+
 # Quickstart
 
 ```shell
