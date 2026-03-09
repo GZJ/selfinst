@@ -27,19 +27,6 @@ chmod +x /tmp/selfinst-debian.sh && \
 sudo mv /tmp/selfinst-debian.sh /usr/local/bin/selfinst-debian.sh
 ```
 
-## Quick Setup
-
-For a quick start with default settings:
-
-```shell
-# Download and make the main script executable
-wget https://raw.githubusercontent.com/GZJ/selfinst/master/selfinst-debian.sh
-chmod +x selfinst-debian.sh
-
-# Run with default settings
-./selfinst-debian.sh
-```
-
 # Quickstart
 
 ```shell
