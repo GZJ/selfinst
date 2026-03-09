@@ -21,12 +21,10 @@ sudo dnf install -y genisoimage squashfs-tools xorriso wget curl
 
 ## Installation
 
-Clone the repository and make the scripts executable:
-
 ```shell
-git clone https://github.com/GZJ/selfinst.git
-cd selfinst
-chmod +x *.sh
+wget -q https://raw.githubusercontent.com/GZJ/selfinst/master/selfinst-debian.sh -O /tmp/selfinst-debian.sh && \
+chmod +x /tmp/selfinst-debian.sh && \
+sudo mv /tmp/selfinst-debian.sh /usr/local/bin/selfinst-debian.sh
 ```
 
 ## Quick Setup
